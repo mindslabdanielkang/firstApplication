@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0.//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mindslab.educationo.dto.repository.mapper.TestMapper">
+<!--    <resultMap id="resultID" type="ai.mindslab.educationo.dto.TestDto">-->
+<!--        <result column="TIME" property="time"></result>-->
+<!--    </resultMap>-->
+    <insert id="insertTestTable">
+        INSERT INTO WEB_TABLE (ID, NAME, INFORMATION) VALUES (SQ_TEST.nextval, #{name}, #{info})
+    </insert>
+    <select id="selectTestTable" parameterType="int" resultType="com.mindslab.educationo.dto.WebDto">
+        SELECT *
+        FROM WEB_TABLE
+    </select>
+    <delete id="deleteTestTable">
+        DELETE
+        FROM WEB_TABLE
+        WHERE ID = #{id}
+    </delete>
+    <update id="editTestTable">
+        UPDATE WEB_TABLE
+        SET NAME = #{name}, INFORMATION = #{info}
+        WHERE ID = #{id}
+    </update>
+    <update id="visitTestTable">
+        UPDATE WEB_TABLE
+        SET VISIT = VISIT + 1
+        WHERE ID = #{id}
+    </update>
+</mapper>
